@@ -346,8 +346,6 @@ begin
 --  NIM_OUT   <= NIM_IN;
   NIM_OUT(1)  <= tcp_tx_afull;
   NIM_OUT(2)  <= '0';
-  NIM_OUT(3)  <= '0';
-  NIM_OUT(4)  <= '0';
   
   dip_sw(1)   <= DIP(1); -- SiTCP
 --  dip_sw(2)   <= not DIP(2);
