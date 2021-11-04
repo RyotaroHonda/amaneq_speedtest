@@ -160,6 +160,7 @@ set_property IOSTANDARD LVCMOS25 [get_ports EEP_CS]
 set_property IOSTANDARD LVCMOS25 [get_ports EEP_SK]
 set_property IOSTANDARD LVCMOS25 [get_ports EEP_DI]
 set_property IOSTANDARD LVCMOS25 [get_ports EEP_DO]
+set_property PULLUP TRUE [get_ports EEP_DO]
 
 # NIM-IO ---------------------------------------------------------------
 set_property IOSTANDARD LVCMOS15 [get_ports NIM_IN[*]]
