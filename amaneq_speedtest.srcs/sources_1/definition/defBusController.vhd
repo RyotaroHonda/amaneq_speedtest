@@ -5,8 +5,8 @@ use ieee.std_logic_unsigned.all;
 
 package defBCT is
 
-  constant kCurrentVersion      : std_logic_vector(31 downto 0):= x"aaaa2222";
-  constant kNumModules          : natural:= 3;
+  constant kCurrentVersion      : std_logic_vector(31 downto 0):= x"aaaa3333";
+  constant kNumModules          : natural:= 4;
 
   -- Local Bus definition
   constant kWidthLocalAddress   : positive:=12;
@@ -47,6 +47,7 @@ package defBCT is
 
   -- Module ID
   constant kMidLED      : std_logic_vector(kWidthModuleID-1 downto 0) := "0000";
+  constant kMidAFC      : std_logic_vector(kWidthModuleID-1 downto 0) := "0001";
   constant kMidSDS      : std_logic_vector(kWidthModuleID-1 downto 0) := "1100";
   constant kMidFMP      : std_logic_vector(kWidthModuleID-1 downto 0) := "1101";
   constant kMidBCT      : std_logic_vector(kWidthModuleID-1 downto 0) := "1110";
@@ -65,11 +66,12 @@ package defBCT is
   type Binder is array (integer range <>) of Leaf;
   constant kLED   : Leaf := (ID => 0);
   constant kSDS   : Leaf := (ID => 1);
-  constant kFMP   : Leaf := (ID => 2);  
+  constant kFMP   : Leaf := (ID => 2);
+  constant kAFC   : Leaf := (ID => 3);
   constant kDummy : Leaf := (ID => -1);
 
   constant AddressBook : Binder(kNumModules-1 downto 0) :=
-    ( 0=>kLED, 1=>kSDS, 2=>kFMP, others=>kDummy );
+    ( 0=>kLED, 1=>kSDS, 2=>kFMP, 3=>kAFC, others=>kDummy );
 
   -- Local bus state machine -----------------------------------------
   type AddressArray is array (integer range kNumModules-1 downto 0)

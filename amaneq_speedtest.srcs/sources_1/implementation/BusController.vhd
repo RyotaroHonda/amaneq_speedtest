@@ -137,6 +137,7 @@ begin
               when kMidLED  => i_module <= kLED.ID;
               when kMidSDS  => i_module <= kSDS.ID;
               when kMidFMP  => i_module <= kFMP.ID;
+              when kMidAFC  => i_module <= kAFC.ID;
               when others   => i_module <= kDummy.ID;
             end case;
             state_bus	<= SetBus;

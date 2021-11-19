@@ -428,6 +428,25 @@ begin
       );
 
   
+  -- AFC --------------------------------------------------------------------
+
+  u_AFC : entity mylib.AfullCounter
+    port map(
+      rst	                => bct_reset,
+      clk	                => clk_xgmii,
+      -- Module input --
+      tcpAfull            => tcp_tx_afull,
+      tcpIsActive         => tcp_is_active,
+      
+      -- Local bus --
+      addrLocalBus      => addr_LocalBus, 
+      dataLocalBusIn    => data_LocalBusIn,
+      dataLocalBusOut   => data_LocalBusOut(kAFC.ID),
+      reLocalBus        => re_LocalBus(kAFC.ID),
+      weLocalBus        => we_LocalBus(kAFC.ID),
+      readyLocalBus     => ready_LocalBus(kAFC.ID)
+      );
+  
   -- BCT -------------------------------------------------------------------------------
   u_BCT_Inst : entity mylib.BusController
     port map(
@@ -458,7 +477,9 @@ begin
     if(tcp_is_active = '0') then
       counter <= (others => '0');
     elsif(clk_xgmii'event and clk_xgmii = '1') then
-      counter <= counter +1;
+      if(tcp_tx_afull = '0') then
+        counter <= counter +1;
+      end if;
     end if;
   end process;
 
