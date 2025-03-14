@@ -67,13 +67,13 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/SiTCPXG/SiTCPXG_XC7K_128K_V1.edf">
+      <File Path="$PPRDIR/SiTCPXG/SiTCPXG_XC7K_128K_V2.edf">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/SiTCPXG/SiTCPXG_XC7K_128K_V1.v">
+      <File Path="$PPRDIR/SiTCPXG/SiTCPXG_XC7K_128K_V2.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -253,6 +253,7 @@
         </FileInfo>
       </File>
       <Config>
+        <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/impl.xdc"/>
         <Option Name="ConstrsType" Val="XDC"/>
       </Config>
     </FileSet>

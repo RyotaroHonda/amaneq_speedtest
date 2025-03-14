@@ -129,6 +129,7 @@ architecture Behavioral of toplevel is
   -- TSD -----------------------------------------------------------------------------------
   signal wd_to_tsd                              : std_logic_vector(kWidthDaqData-1 downto 0);
   signal we_to_tsd, empty_to_tsd, re_from_tsd   : std_logic;
+  signal read_request                           : std_logic;
 
   signal counter : std_logic_vector(63 downto 0);
 
@@ -316,6 +317,12 @@ architecture Behavioral of toplevel is
   end component;
 
   -- debug -----------------------------------------------------------------------------
+  -- attribute mark_debug of counter         : signal is "true";
+  -- attribute mark_debug of tcp_tx_afull    : signal is "true";
+  -- attribute mark_debug of tcp_is_active   : signal is "true";
+  -- attribute mark_debug of tcp_txb         : signal is "true";
+  -- attribute mark_debug of tcp_txd         : signal is "true";
+  -- attribute mark_debug of read_request    : signal is "true";
   
 begin
   -- ===================================================================================
@@ -492,9 +499,9 @@ begin
       
       -- data from EVB --
       rdFromEVB		  => counter,
-      rvFromEVB		  => tcp_is_active,
+      rvFromEVB		  => read_request,
       emptyFromEVB  => '0',
-      reToEVB		    => open,
+      reToEVB		    => read_request,
       
       -- data to SiTCP
       isActive		  => tcp_is_active,

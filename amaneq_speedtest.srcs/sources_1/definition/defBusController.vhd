@@ -5,7 +5,7 @@ use ieee.std_logic_unsigned.all;
 
 package defBCT is
 
-  constant kCurrentVersion      : std_logic_vector(31 downto 0):= x"aaaa3333";
+  constant kCurrentVersion      : std_logic_vector(31 downto 0):= x"aaaa5555";
   constant kNumModules          : natural:= 4;
 
   -- Local Bus definition
